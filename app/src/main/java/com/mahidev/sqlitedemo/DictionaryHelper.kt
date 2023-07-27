@@ -97,14 +97,41 @@ class DictionaryHelper(private val context: Context) : SQLiteOpenHelper(context,
 
       val cursor =  database?.rawQuery("select word,typ  from eng_w_ml where mid in (select eid from eng_w_e_ml where word like '$word')",null);
 
-        if (cursor != null && cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst())
+        {
 
             val meaning1 = cursor?.getString(0) ?: ""
+//            System.out.println("cursor count:"+ cursor)
+//            cursor.moveToNext()
+//            var meaning2 = cursor?.getString(cursor.getColumnIndex("word"));
+            val stringBuilder = StringBuilder()
+            do
+            {
+                stringBuilder.append(cursor.getString(cursor.getColumnIndex("word")))
+                stringBuilder.append("\n")
+            }
+            while(cursor.moveToNext())
+
+
             //code may be int
+//            if(cursor?.count > 2)
+//            {
+//              meaning2 = cursor.getString(1)
+//            }
+//
+//            var meaning3 = ""
+//            if(cursor?.count > 3)
+//            {
+//                meaning3 = cursor.getString(2)
+//            }
+//            if(cursor?.getString(1) != null)
+//            {
+//
+//            }
         //    val meaning2 = cursor?.getString(1) ?: ""
 //            val meaning3 = cursor?.getString(2) ?: ""
 
-            return Meaning(meaning1 = meaning1, meaning2 = "meaning2", meaning3 = "meaning3")
+            return Meaning(meaning1 = stringBuilder.toString(), meaning2 = "", meaning3 = "")
 
             // Process the data
         } else {

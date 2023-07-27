@@ -15,6 +15,7 @@ import android.view.ActionMode
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -38,6 +39,12 @@ class MainActivity : AppCompatActivity()
         val question = dbHelper.getQuestion((0..1280).random())
 
         val textViewLongDesc = findViewById<TextView>(R.id.textView_long_desc)
+        val btnClear = findViewById<Button>(R.id.clear_button)
+
+        btnClear.setOnClickListener {
+            val editText = findViewById<EditText>(R.id.editText)
+            editText.text.clear()
+        }
 
 
         Log.e("Mahi", question.fullDesc)
@@ -61,7 +68,7 @@ class MainActivity : AppCompatActivity()
         {
             // Create and show the AlertDialog
             val dialogBuilder = AlertDialog.Builder(this)
-            dialogBuilder.setMessage(meaning.meaning1)
+            dialogBuilder.setMessage(meaning.meaning1 + " " + meaning.meaning2)
                 .setPositiveButton("OK") { _, _ ->
                     // Handle the positive button click here (if needed)
                     // This block is optional if you only want to display a message
@@ -91,9 +98,11 @@ class MainActivity : AppCompatActivity()
 
         textView.text = question.shortDesc
         textViewLongDesc.text = question.fullDesc
-        textViewType.text = question.type
+        textViewType.text = question.type + " " +question.code + " " +  question.path + " " + question.subcode
 
         Log.e("Mahi", question.fullDesc)
+
+
 
     }
 

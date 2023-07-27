@@ -13,12 +13,31 @@ android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+
         tools:context=".MainActivity">
 
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
         <EditText
         android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_width="wrap_content"
+            android:hint="find the meaning here by checking it is "
+            android:layout_height="wrap_content"
+            />
+
+            <Button
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="clear"
+                android:id="@+id/clear_button"
+                />
+
+        </LinearLayout>
 
 
         <LinearLayout
@@ -78,6 +97,8 @@ android:orientation="vertical"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="Short Description"
+            android:textIsSelectable="true"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -106,6 +127,7 @@ android:orientation="vertical"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="Long Description"
+
             android:textIsSelectable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
